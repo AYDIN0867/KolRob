@@ -1,0 +1,108 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import threading
+
+# Paylaşılan koordinatlar
+hedef = {"x": 0, "y": 0}
+
+# ── Kamera Thread'i ──────────────────────────────────────────────
+def kamera_thread():
+    kamera = cv2.VideoCapture(0)
+
+    while True:
+        ret, frame = kamera.read()
+        if not ret:
+            break
+
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+        alt_sinir1 = np.array([0, 80, 50])
+        ust_sinir1 = np.array([15, 255, 255])
+        alt_sinir2 = np.array([165, 80, 50])
+        ust_sinir2 = np.array([180, 255, 255])
+
+        maske = cv2.bitwise_or(
+            cv2.inRange(hsv, alt_sinir1, ust_sinir1),
+            cv2.inRange(hsv, alt_sinir2, ust_sinir2)
+        )
+        maske = cv2.erode(maske, None, iterations=2)
+        maske = cv2.dilate(maske, None, iterations=2)
+
+        konturlar, _ = cv2.findContours(maske, cv2.RETR_EXTERNAL,
+                                         cv2.CHAIN_APPROX_SIMPLE)
+        if konturlar:
+            en_buyuk = max(konturlar, key=cv2.contourArea)
+            if cv2.contourArea(en_buyuk) > 2000:
+                (x, y), _ = cv2.minEnclosingCircle(en_buyuk)
+                # Kamera koordinatını kol koordinatına çevir
+                # Ekran 640x480 → kol -20/+20 aralığına ölçekle
+                hedef["x"] = (x - 320) / 320 * 18
+                hedef["y"] = (240 - y) / 240 * 18  # y ekseni ters
+
+                cv2.circle(frame, (int(x), int(y)), 10, (0, 255, 0), 3)
+                cv2.putText(frame, f"Kol hedefi: ({hedef['x']:.1f}, {hedef['y']:.1f})",
+                           (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+
+        cv2.imshow("Kamera", frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    kamera.release()
+    cv2.destroyAllWindows()
+
+# ── Robotik Kol Animasyonu ───────────────────────────────────────
+L1, L2 = 12, 8
+
+def inverse_kinematics(tx, ty):
+    """ Hedef noktadan eklem açılarını hesapla (IK) """
+    dist = np.sqrt(tx**2 + ty**2)
+    dist = np.clip(dist, 0.1, L1 + L2 - 0.1)
+
+    cos_t2 = (dist**2 - L1**2 - L2**2) / (2 * L1 * L2)
+    cos_t2 = np.clip(cos_t2, -1, 1)
+    t2 = np.arccos(cos_t2)
+
+    k1 = L1 + L2 * np.cos(t2)
+    k2 = L2 * np.sin(t2)
+    t1 = np.arctan2(ty, tx) - np.arctan2(k2, k1)
+
+    return t1, t2
+
+fig, ax = plt.subplots(figsize=(7, 7))
+kol, = ax.plot([], [], 'o-', color='steelblue', linewidth=4, markersize=10)
+hedef_nokta, = ax.plot([], [], 'r*', markersize=15)
+
+ax.set_xlim(-22, 22)
+ax.set_ylim(-22, 22)
+ax.set_aspect('equal')
+ax.grid(True)
+ax.axhline(y=0, color='brown', linewidth=2)
+ax.plot(0, 0, 's', color='gray', markersize=15)
+ax.set_title("Kameradan Kontrol Edilen Robotik Kol", fontsize=13)
+
+def guncelle(frame):
+    tx = hedef["x"]
+    ty = hedef["y"]
+
+    try:
+        t1, t2 = inverse_kinematics(tx, ty)
+        x1 = L1 * np.cos(t1)
+        y1 = L1 * np.sin(t1)
+        x2 = x1 + L2 * np.cos(t1 + t2)
+        y2 = y1 + L2 * np.sin(t1 + t2)
+
+        kol.set_data([0, x1, x2], [0, y1, y2])
+        hedef_nokta.set_data([tx], [ty])
+    except:
+        pass
+
+    return kol, hedef_nokta
+
+# Kamerayı ayrı thread'de başlat
+t = threading.Thread(target=kamera_thread, daemon=True)
+t.start()
+
+ani = animation.FuncAnimation(fig, guncelle, interval=50, blit=True)
+plt.show()
