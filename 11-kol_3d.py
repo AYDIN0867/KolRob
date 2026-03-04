@@ -190,3 +190,6 @@ t.start()
 
 ani = animation.FuncAnimation(fig, guncelle, interval=50, blit=False)
 plt.show()
+
+#Nesne kameraya yaklaştırınca --- nesne buyuyor---alan buyuyor
+#Z kuculuyor ---hedef dış kullanıcıya yakın
