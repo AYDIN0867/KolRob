@@ -23,3 +23,6 @@ import pytest
 def test_copyright():
     rc = main(argv=['.', 'test'])
     assert rc == 0, 'Found errors'
+#yazdım ama hiç birşey anlamadım
+#bakalım ne olcek
+
