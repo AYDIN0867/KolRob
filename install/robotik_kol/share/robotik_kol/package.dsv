@@ -1,0 +1,6 @@
+source;share/robotik_kol/hook/pythonpath.ps1
+source;share/robotik_kol/hook/pythonpath.dsv
+source;share/robotik_kol/hook/pythonpath.sh
+source;share/robotik_kol/hook/ament_prefix_path.ps1
+source;share/robotik_kol/hook/ament_prefix_path.dsv
+source;share/robotik_kol/hook/ament_prefix_path.sh
