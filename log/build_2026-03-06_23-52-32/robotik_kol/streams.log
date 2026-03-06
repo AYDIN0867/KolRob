@@ -1,0 +1,25 @@
+[0.802s] Invoking command in '/home/robotzan/ros2_ws/src/robotik_kol': PYTHONPATH=/home/robotzan/ros2_ws/build/robotik_kol/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robotik_kol build --build-base /home/robotzan/ros2_ws/build/robotik_kol/build install --record /home/robotzan/ros2_ws/build/robotik_kol/install.log --single-version-externally-managed install_data
+[1.018s] running egg_info
+[1.019s] writing ../../build/robotik_kol/robotik_kol.egg-info/PKG-INFO
+[1.021s] writing dependency_links to ../../build/robotik_kol/robotik_kol.egg-info/dependency_links.txt
+[1.021s] writing entry points to ../../build/robotik_kol/robotik_kol.egg-info/entry_points.txt
+[1.022s] writing requirements to ../../build/robotik_kol/robotik_kol.egg-info/requires.txt
+[1.022s] writing top-level names to ../../build/robotik_kol/robotik_kol.egg-info/top_level.txt
+[1.025s] reading manifest file '../../build/robotik_kol/robotik_kol.egg-info/SOURCES.txt'
+[1.026s] writing manifest file '../../build/robotik_kol/robotik_kol.egg-info/SOURCES.txt'
+[1.026s] running build
+[1.026s] running build_py
+[1.027s] copying robotik_kol/suscriber_node.py -> /home/robotzan/ros2_ws/build/robotik_kol/build/lib/robotik_kol
+[1.028s] running install
+[1.028s] running install_lib
+[1.030s] copying /home/robotzan/ros2_ws/build/robotik_kol/build/lib/robotik_kol/suscriber_node.py -> /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol
+[1.030s] byte-compiling /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol/suscriber_node.py to suscriber_node.cpython-310.pyc
+[1.033s] running install_data
+[1.033s] running install_egg_info
+[1.034s] removing '/home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol-0.0.0-py3.10.egg-info' (and everything under it)
+[1.035s] Copying ../../build/robotik_kol/robotik_kol.egg-info to /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol-0.0.0-py3.10.egg-info
+[1.038s] running install_scripts
+[1.057s] Installing publisher_node script to /home/robotzan/ros2_ws/install/robotik_kol/lib/robotik_kol
+[1.058s] Installing subscriber_node script to /home/robotzan/ros2_ws/install/robotik_kol/lib/robotik_kol
+[1.058s] writing list of installed files to '/home/robotzan/ros2_ws/build/robotik_kol/install.log'
+[1.079s] Invoked command in '/home/robotzan/ros2_ws/src/robotik_kol' returned '0': PYTHONPATH=/home/robotzan/ros2_ws/build/robotik_kol/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robotik_kol build --build-base /home/robotzan/ros2_ws/build/robotik_kol/build install --record /home/robotzan/ros2_ws/build/robotik_kol/install.log --single-version-externally-managed install_data
