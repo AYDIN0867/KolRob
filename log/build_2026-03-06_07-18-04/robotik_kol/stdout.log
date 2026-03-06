@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/robotik_kol/robotik_kol.egg-info/PKG-INFO
+writing dependency_links to ../../build/robotik_kol/robotik_kol.egg-info/dependency_links.txt
+writing entry points to ../../build/robotik_kol/robotik_kol.egg-info/entry_points.txt
+writing requirements to ../../build/robotik_kol/robotik_kol.egg-info/requires.txt
+writing top-level names to ../../build/robotik_kol/robotik_kol.egg-info/top_level.txt
+reading manifest file '../../build/robotik_kol/robotik_kol.egg-info/SOURCES.txt'
+writing manifest file '../../build/robotik_kol/robotik_kol.egg-info/SOURCES.txt'
+running build
+running build_py
+copying robotik_kol/suscriber_node.py -> /home/robotzan/ros2_ws/build/robotik_kol/build/lib/robotik_kol
+running install
+running install_lib
+copying /home/robotzan/ros2_ws/build/robotik_kol/build/lib/robotik_kol/suscriber_node.py -> /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol
+byte-compiling /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol/suscriber_node.py to suscriber_node.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/robotik_kol/robotik_kol.egg-info to /home/robotzan/ros2_ws/install/robotik_kol/lib/python3.10/site-packages/robotik_kol-0.0.0-py3.10.egg-info
+running install_scripts
+Installing publisher_node script to /home/robotzan/ros2_ws/install/robotik_kol/lib/robotik_kol
+Installing subscriber_node script to /home/robotzan/ros2_ws/install/robotik_kol/lib/robotik_kol
+writing list of installed files to '/home/robotzan/ros2_ws/build/robotik_kol/install.log'

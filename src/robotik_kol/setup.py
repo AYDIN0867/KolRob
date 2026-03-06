@@ -23,8 +23,9 @@ setup(
         ],
     },
     entry_points={
-        'console_scripts': [
-'publisher_node = robotik_kol.publisher_node:main',
-        ],
-    },
+    'console_scripts': [
+        'publisher_node = robotik_kol.publisher_node:main',
+        'subscriber_node = robotik_kol.subscriber_node:main',
+    ],
+},
 )
