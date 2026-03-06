@@ -26,6 +26,7 @@ def test_copyright():
 #yazdım ama hiç birşey anlamadım
 #bakalım ne 
 #bakalım ne olcek 
+#bayağı uğrastık ama değecek....
 
 
 
